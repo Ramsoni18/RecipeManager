@@ -1,0 +1,40 @@
+package com.ordina.recipemanager.advice;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+@Slf4j
+public class LoggingAdvice {
+    /**
+     * This Pointcut defines all the methods in package com.assessment.app
+     */
+    @Pointcut(value = "execution(* com.ordina.recipemanager.*.*.*(..) )")
+    public void loggingPointcutForAllMethods() {
+    }
+
+    /**
+     * This is a logger handler to log input params and the returned value
+     * @param proceedingJoinPoint - ProceedingJoinPoint parameter for around advice
+     * @return Returns object
+     * @throws Throwable - Throws unchecked exception
+     */
+    @Around("loggingPointcutForAllMethods()")
+    public Object applicationLogger(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        ObjectMapper mapper = new ObjectMapper();
+        String methodName = proceedingJoinPoint.getSignature().getName();
+        String className = proceedingJoinPoint.getTarget().getClass().toString();
+        Object[] array = proceedingJoinPoint.getArgs();
+        log.info("method invoked - '" + className + " : " + methodName + "()" + "'. Arguments passed are : "
+                + mapper.writeValueAsString(array));
+        Object object = proceedingJoinPoint.proceed();
+        log.info(className + " : " + methodName + "()" + "Response : " + mapper.writeValueAsString(object));
+        return object;
+    }
+}
