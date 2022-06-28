@@ -126,7 +126,7 @@ public class RecipeControllerIntegrationTest {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/search/findRecipeByInstructionContainsText/zest half a large lemon")
                 .accept(MediaType.APPLICATION_JSON);
-        mockMvc.perform(mockRequest).andExpect(status().isInternalServerError())
+        mockMvc.perform(mockRequest).andExpect(status().isOk())
                 .andReturn();
     }
 
