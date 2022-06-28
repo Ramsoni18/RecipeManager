@@ -10,7 +10,8 @@ removing and fetching recipes. Additionally, a search filter for recipes based o
 
 How to Execute the Project:-
 1. Go to Root folder of project at terminal
-2. Execute command ./mvnw clean install
+2. Execute command for installation of project ./mvnw clean install
+3. Execute command for running the project java -jar target/mywebserviceapp-0.0.1-SNAPSHOT.jar
 
 How to configure a Profile for Development , Testing and Production Environment :-
 1. In a text editor, Open the file at location /src/main/resources/application.properties
