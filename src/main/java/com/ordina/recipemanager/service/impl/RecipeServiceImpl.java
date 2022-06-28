@@ -134,7 +134,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<Recipe> findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc(String text) {
-        if (text != null && text.equalsIgnoreCase("")) {
+        if (text != null && !text.equalsIgnoreCase("")) {
             try {
                 return recipeRepository.findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc(text);
             } catch (DataAccessException dae) {
