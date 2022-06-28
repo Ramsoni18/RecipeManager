@@ -12,19 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class LoggingAdvice {
-    /**
-     * This Pointcut defines all the methods in package com.assessment.app
-     */
     @Pointcut(value = "execution(* com.ordina.recipemanager.*.*.*(..) )")
     public void loggingPointcutForAllMethods() {
     }
-
-    /**
-     * This is a logger handler to log input params and the returned value
-     * @param proceedingJoinPoint - ProceedingJoinPoint parameter for around advice
-     * @return Returns object
-     * @throws Throwable - Throws unchecked exception
-     */
+    
     @Around("loggingPointcutForAllMethods()")
     public Object applicationLogger(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         ObjectMapper mapper = new ObjectMapper();

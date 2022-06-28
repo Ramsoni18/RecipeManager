@@ -10,8 +10,12 @@ import java.util.List;
 @RestController
 @RequestMapping("recipe-manager/rest/api/v1/ingredient")
 public class IngredientController {
+    final IngredientService ingredientService;
+
     @Autowired
-    IngredientService ingredientService;
+    public IngredientController(IngredientService ingredientService) {
+        this.ingredientService = ingredientService;
+    }
 
     @GetMapping("/getIngredients")
     public List<Ingredient> getIngredients() {

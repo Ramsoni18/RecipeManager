@@ -13,8 +13,12 @@ import java.util.List;
 @Service
 public class IngredientServiceImpl implements IngredientService {
 
+    final IngredientRepository ingredientRepository;
+
     @Autowired
-    IngredientRepository ingredientRepository;
+    public IngredientServiceImpl(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
 
     @Override
     public Ingredient saveIngredient(Ingredient ingredient) {
@@ -33,14 +37,14 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     public Ingredient getIngredientById(int id) {
-        if(ingredientRepository.findById(id).isEmpty())
+        if (ingredientRepository.findById(id).isEmpty())
             throw new IngredientNotFoundException();
         return ingredientRepository.findById(id).orElse(null);
     }
 
     @Override
     public void deleteIngredient(int id) {
-        if(ingredientRepository.findById(id).isPresent())
+        if (ingredientRepository.findById(id).isPresent())
             ingredientRepository.deleteById(id);
         throw new RecipeNotFoundException();
     }

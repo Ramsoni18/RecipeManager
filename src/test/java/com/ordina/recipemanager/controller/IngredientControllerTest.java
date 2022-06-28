@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -33,7 +34,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void given_whenGetIngredients_thanReturnIngredient() throws Exception {
+    public void given_whenGetIngredients_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(INGREDIENT_MANAGER_SERVICE + "/getIngredients")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -44,16 +45,16 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void given_whenGetIngredientById_thanReturnIngredient() throws Exception {
+    public void given_whenGetIngredientById_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-                .get(INGREDIENT_MANAGER_SERVICE+"/getIngredientById/102")
+                .get(INGREDIENT_MANAGER_SERVICE + "/getIngredientById/102")
                 .accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mockRequest).andExpect(status().isOk()).andExpect(jsonPath("$.id").value(102))
                 .andReturn();
     }
 
     @Test
-    public void givenIngredient_whenAddIngredient_thanReturnIngredient() throws Exception {
+    public void givenIngredient_whenAddIngredient_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(INGREDIENT_MANAGER_SERVICE + "/addIngredient")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -63,7 +64,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenIngredientList_whenAddIngredients_thanReturnIngredientList() throws Exception{
+    public void givenIngredientList_whenAddIngredients_thenReturnIngredientList() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(INGREDIENT_MANAGER_SERVICE + "/addIngredients")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -73,17 +74,17 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenId_whenDeleteIngredient_thanReturnVoid() throws Exception {
+    public void givenId_whenDeleteIngredient_thenReturnNoValue() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-                .delete(INGREDIENT_MANAGER_SERVICE+"/deleteIngredient/103")
+                .delete(INGREDIENT_MANAGER_SERVICE + "/deleteIngredient/103")
                 .accept(MediaType.APPLICATION_JSON);
-        mockMvc.perform(mockRequest).andExpect(status().isExpectationFailed())
+        mockMvc.perform(mockRequest).andExpect(status().isInternalServerError())
                 .andReturn();
     }
 
     @Test
-    public void givenIngredient_whenUpdateIngredient_thanReturnIngredient() throws Exception {
-       Ingredient updatedIngredient = Ingredient.builder().id(106).name("Black Pepper").build();
+    public void givenIngredient_whenUpdateIngredient_thenReturnIngredient() throws Exception {
+        Ingredient updatedIngredient = Ingredient.builder().id(106).name("Black Pepper").build();
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .put(INGREDIENT_MANAGER_SERVICE + "/updateIngredient")

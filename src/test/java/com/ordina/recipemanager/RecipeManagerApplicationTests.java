@@ -12,8 +12,13 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 @Slf4j
 class RecipeManagerApplicationTests {
+    @Autowired
+    MockMvc mockMvc;
 
-
+    @Test
+    void contextLoads() {
+        Assertions.assertNotNull(mockMvc);
+    }
 
 
 }

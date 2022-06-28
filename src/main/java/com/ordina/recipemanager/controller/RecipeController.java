@@ -23,7 +23,7 @@ public class RecipeController {
     public List<Recipe> getRecipes() {
         return recipeService.getRecipes();
     }
-    
+
     @GetMapping("/getRecipeById/{id}")
     public Recipe getRecipeById(@PathVariable int id) {
         return recipeService.getRecipeById(id);
@@ -45,7 +45,7 @@ public class RecipeController {
     }
 
     @PutMapping("/updateRecipe")
-    public Recipe updateProduct(@RequestBody Recipe recipe) {
+    public Recipe updateRecipe(@RequestBody Recipe recipe) {
         return recipeService.updateRecipe(recipe);
     }
 

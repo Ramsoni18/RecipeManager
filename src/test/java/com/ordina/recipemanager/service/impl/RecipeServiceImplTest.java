@@ -9,6 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -31,37 +33,9 @@ class RecipeServiceImplTest {
 
     @Test
     void saveRecipes() {
-    }
-
-    @Test
-    void getRecipes() {
-    }
-
-    @Test
-    void getRecipeById() {
-    }
-
-    @Test
-    void deleteRecipe() {
-    }
-
-    @Test
-    void updateRecipe() {
-    }
-
-    @Test
-    void findByIsVegetarianEqualsOrderByTitleAsc() {
-    }
-
-    @Test
-    void findByNoOfServingEqualsOrderById() {
-    }
-
-    @Test
-    void findByIngredients_NameIsIn_NameIsNotInOrderByTitle() {
-    }
-
-    @Test
-    void findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc() {
+        List<Recipe> expectedRecipes = Helper.createRecipes();
+        when(recipeRepository.saveAll(expectedRecipes)).thenReturn(expectedRecipes);
+        List<Recipe> actualRecipes = recipeServiceImpl.saveRecipes(expectedRecipes);
+        assertEquals(expectedRecipes, actualRecipes);
     }
 }

@@ -5,7 +5,6 @@ import com.ordina.recipemanager.Helper;
 import com.ordina.recipemanager.model.Recipe;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,12 +29,7 @@ public class RecipeControllerIntegrationTest {
     MockMvc mockMvc;
 
     @Test
-    void contextLoads() {
-        Assertions.assertNotNull(mockMvc);
-    }
-
-    @Test
-    void givenRecipe_whenAddRecipe_thanReturnRecipe() throws Exception {
+    void givenRecipe_whenAddRecipe_thenReturnRecipe() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(RECIPE_MANAGER_SERVICE + "/addRecipe")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -45,7 +39,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenRecipeList_whenAddRecipes_thanReturnRecipes() throws Exception {
+    void givenRecipeList_whenAddRecipes_thenReturnRecipes() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(RECIPE_MANAGER_SERVICE + "/addRecipes")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -55,7 +49,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void given_whenGetRecipes_thanReturnRecipes() throws Exception {
+    void given_whenGetRecipes_thenReturnRecipes() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/getRecipes")
                 .accept(MediaType.APPLICATION_JSON);
@@ -64,7 +58,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenId_whenGetRecipeById_thanReturnRecipe() throws Exception {
+    void givenId_whenGetRecipeById_thenReturnRecipe() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/getRecipeById/1002")
                 .accept(MediaType.APPLICATION_JSON);
@@ -73,7 +67,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenId_whenDeleteRecipe_thanReturnVoid() throws Exception {
+    void givenId_whenDeleteRecipe_thenReturnVoid() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .delete(RECIPE_MANAGER_SERVICE + "/deleteRecipe/1")
                 .accept(MediaType.APPLICATION_JSON);
@@ -82,7 +76,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenRecipe_whenUpdateRecipe_thanReturnRecipe() throws Exception {
+    void givenRecipe_whenUpdateRecipe_thenReturnRecipe() throws Exception {
         Recipe recipe = Recipe.builder()
                 .id(2)
                 .title("New Updated Recipe Title")
@@ -99,7 +93,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenIsVegetarian_whenFindRecipeIsVegetarian_thanTrue() throws Exception {
+    void givenIsVegetarian_whenFindRecipeIsVegetarian_thenTrue() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/search/findRecipeIsVegetarian/false")
                 .accept(MediaType.APPLICATION_JSON);
@@ -108,7 +102,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenNoOfServing_whenFindRecipeByNoOfServing_thanReturnRecipes() throws Exception {
+    void givenNoOfServing_whenFindRecipeByNoOfServing_thenReturnRecipes() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/search/findRecipeByNoOfServing/2")
                 .accept(MediaType.APPLICATION_JSON);
@@ -117,7 +111,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenId_whenFindRecipeByIngredientsIncludesOrExcludes_thanReturnRecipes() throws Exception {
+    void givenId_whenFindRecipeByIngredientsIncludesOrExcludes_thenReturnRecipes() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/search/findRecipeByIngredientsIncludesOrExcludes/")
                 .param("includes", "Butter")
@@ -128,7 +122,7 @@ public class RecipeControllerIntegrationTest {
     }
 
     @Test
-    void givenId_whenFindRecipeByInstructionContainsText_thanReturnRecipes() throws Exception {
+    void givenId_whenFindRecipeByInstructionContainsText_thenReturnRecipes() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(RECIPE_MANAGER_SERVICE + "/search/findRecipeByInstructionContainsText/zest half a large lemon")
                 .accept(MediaType.APPLICATION_JSON);
