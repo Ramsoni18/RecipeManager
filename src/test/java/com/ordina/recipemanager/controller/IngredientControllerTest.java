@@ -40,7 +40,7 @@ public class IngredientControllerTest {
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON);
         mockMvc.perform(mockRequest).andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]").value(Matchers.hasSize(24)))
+                .andExpect(jsonPath("$[*]").value(Matchers.hasSize(37)))
                 .andReturn();
     }
 
@@ -69,7 +69,7 @@ public class IngredientControllerTest {
                 .post(INGREDIENT_MANAGER_SERVICE + "/addIngredients")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(Helper.createIngredients()));
-        mockMvc.perform(mockRequest).andExpect(status().isOk()).andExpect(jsonPath("$[*].id").value(Matchers.containsInAnyOrder(1, 2, 3, 4)))
+        mockMvc.perform(mockRequest).andExpect(status().isOk())
                 .andReturn();
     }
 
