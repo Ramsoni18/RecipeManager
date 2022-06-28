@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class RecipeControllerTest {
+class RecipeControllerTest {
 
     @Mock
     private RecipeService recipeService;
@@ -94,7 +94,7 @@ public class RecipeControllerTest {
         List<Recipe> expectedResponse = Helper.createRecipes();
         List<String> includes = Arrays.asList("Butter");
         List<String> excludes = Arrays.asList("Cooking Oil");
-        when(recipeService.findByIngredients_NameIsIn_NameIsNotInOrderByTitle(includes, excludes)).thenReturn(expectedResponse);
+        when(recipeService.findByIngredientsNameIsInNameIsNotInOrderByTitle(includes, excludes)).thenReturn(expectedResponse);
         List<Recipe> actualResponse = recipeController.findRecipeByIngredientsIncludesOrExcludes(includes, excludes);
         assertEquals(expectedResponse, actualResponse);
     }

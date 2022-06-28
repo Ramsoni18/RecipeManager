@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-public class RecipeControllerIntegrationTest {
+class RecipeControllerIntegrationTest {
 
     static String RECIPE_MANAGER_SERVICE = "/recipe-manager/rest/api/v1/recipe/";
 

@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-public class IngredientControllerTest {
+class IngredientControllerTest {
     static String INGREDIENT_MANAGER_SERVICE = "/recipe-manager/rest/api/v1/ingredient/";
 
     @Autowired
@@ -34,7 +34,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void given_whenGetIngredients_thenReturnIngredient() throws Exception {
+    void given_whenGetIngredients_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(INGREDIENT_MANAGER_SERVICE + "/getIngredients")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -45,7 +45,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void given_whenGetIngredientById_thenReturnIngredient() throws Exception {
+    void given_whenGetIngredientById_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .get(INGREDIENT_MANAGER_SERVICE + "/getIngredientById/102")
                 .accept(MediaType.APPLICATION_JSON);
@@ -54,7 +54,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenIngredient_whenAddIngredient_thenReturnIngredient() throws Exception {
+    void givenIngredient_whenAddIngredient_thenReturnIngredient() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(INGREDIENT_MANAGER_SERVICE + "/addIngredient")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -64,7 +64,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenIngredientList_whenAddIngredients_thenReturnIngredientList() throws Exception {
+    void givenIngredientList_whenAddIngredients_thenReturnIngredientList() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .post(INGREDIENT_MANAGER_SERVICE + "/addIngredients")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -74,7 +74,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenId_whenDeleteIngredient_thenReturnNoValue() throws Exception {
+    void givenId_whenDeleteIngredient_thenReturnNoValue() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
                 .delete(INGREDIENT_MANAGER_SERVICE + "/deleteIngredient/103")
                 .accept(MediaType.APPLICATION_JSON);
@@ -83,7 +83,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void givenIngredient_whenUpdateIngredient_thenReturnIngredient() throws Exception {
+    void givenIngredient_whenUpdateIngredient_thenReturnIngredient() throws Exception {
         Ingredient updatedIngredient = Ingredient.builder().id(106).name("Black Pepper").build();
 
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders

@@ -38,7 +38,7 @@ public class RecipeServiceImpl implements RecipeService {
     public List<Recipe> saveRecipes(List<Recipe> recipes) {
         if (recipes == null)
             throw new ApplicationException("recipe cannot be null");
-        if (recipes != null && recipes.size() <= 0)
+        if (recipes != null && recipes.isEmpty())
             throw new ApplicationException("recipe cannot be null");
         try {
             return recipeRepository.saveAll(recipes);
@@ -120,13 +120,13 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public List<Recipe> findByIngredients_NameIsIn_NameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes) {
+    public List<Recipe> findByIngredientsNameIsInNameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes) {
         if (includes == null)
             includes = new LinkedHashSet<>();
         if (excludes == null)
             excludes = new LinkedHashSet<>();
         try {
-            return recipeRepository.findByIngredients_NameIsIn_NameIsNotInOrderByTitle(includes, excludes);
+            return recipeRepository.findByIngredientsNameIsInNameIsNotInOrderByTitle(includes, excludes);
         } catch (DataAccessException dae) {
             throw new ApplicationException("cannot find recipe based on ingredients because of " + dae.getMessage());
         }

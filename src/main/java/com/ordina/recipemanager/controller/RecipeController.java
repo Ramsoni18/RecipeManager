@@ -61,7 +61,7 @@ public class RecipeController {
 
     @GetMapping("/search/findRecipeByIngredientsIncludesOrExcludes/")
     public List<Recipe> findRecipeByIngredientsIncludesOrExcludes(@RequestParam @Valid Collection<String> includes, @RequestParam @Valid Collection<String> excludes) {
-        return recipeService.findByIngredients_NameIsIn_NameIsNotInOrderByTitle(includes, excludes);
+        return recipeService.findByIngredientsNameIsInNameIsNotInOrderByTitle(includes, excludes);
     }
 
     @GetMapping("/search/findRecipeByInstructionContainsText/{text}")

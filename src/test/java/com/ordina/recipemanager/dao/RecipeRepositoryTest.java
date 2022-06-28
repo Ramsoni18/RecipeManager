@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class RecipeRepositoryTest {
+class RecipeRepositoryTest {
     @Autowired
     private TestEntityManager testEntityManager;
 
@@ -17,7 +17,7 @@ public class RecipeRepositoryTest {
     private RecipeRepository recipeRepository;
 
     @Test
-    public void contextLoads() {
+    void contextLoads() {
         Assertions.assertNotNull(testEntityManager);
     }
 

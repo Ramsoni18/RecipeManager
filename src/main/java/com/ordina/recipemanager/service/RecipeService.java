@@ -5,24 +5,24 @@ import com.ordina.recipemanager.model.Recipe;
 import java.util.Collection;
 import java.util.List;
 
-public interface RecipeService  {
-    public Recipe saveRecipe(Recipe recipe);
+public interface RecipeService {
+    Recipe saveRecipe(Recipe recipe);
 
-    public List<Recipe> saveRecipes(List<Recipe> recipes);
+    List<Recipe> saveRecipes(List<Recipe> recipes);
 
-    public List<Recipe> getRecipes();
+    List<Recipe> getRecipes();
 
-    public Recipe getRecipeById(int id);
+    Recipe getRecipeById(int id);
 
-    public void deleteRecipe(int id);
+    void deleteRecipe(int id);
 
-    public Recipe updateRecipe(Recipe recipe);
+    Recipe updateRecipe(Recipe recipe);
 
-    public List<Recipe> findByIsVegetarianEqualsOrderByTitleAsc(boolean isVegetarian);
+    List<Recipe> findByIsVegetarianEqualsOrderByTitleAsc(boolean isVegetarian);
 
-    public List<Recipe> findByNoOfServingEqualsOrderById(int noOfServing);
+    List<Recipe> findByNoOfServingEqualsOrderById(int noOfServing);
 
-    public List<Recipe> findByIngredients_NameIsIn_NameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes);
+    List<Recipe> findByIngredientsNameIsInNameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes);
 
-    public List<Recipe> findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc(String text);
+    List<Recipe> findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc(String text);
 }

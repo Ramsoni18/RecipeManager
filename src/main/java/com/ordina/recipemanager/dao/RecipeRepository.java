@@ -16,7 +16,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer>, JpaSpe
     List<Recipe> findByNoOfServingEqualsOrderById(int noOfServing);
 
     @Query("SELECT r FROM Recipe r JOIN r.ingredients i where i.name IN (?1) AND i.name NOT IN (?2)")
-    List<Recipe> findByIngredients_NameIsIn_NameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes);
+    List<Recipe> findByIngredientsNameIsInNameIsNotInOrderByTitle(Collection<String> includes, Collection<String> excludes);
 
     List<Recipe> findDistinctByInstructionsContainsAllIgnoreCaseOrderByTitleAsc(String instructions);
 }
