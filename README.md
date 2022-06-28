@@ -9,7 +9,7 @@ removing and fetching recipes. Additionally, a search filter for recipes based o
 
 
 How to Execute the Project:-
-1. Go to Root folder of project at terminal
+1. Go to Root folder "RecipeManager" of project at terminal
 2. Execute command for installation of project ./mvnw clean install
 3. Execute command for running the project ./mvnw spring-boot:run
 
